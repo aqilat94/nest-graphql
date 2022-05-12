@@ -1,10 +1,13 @@
+import { VideoModule } from './videos/video.module';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    VideoModule,
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql']
+    })
+  ],
 })
-export class AppModule {}
+export class AppModule { }
